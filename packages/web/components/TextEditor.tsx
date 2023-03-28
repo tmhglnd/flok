@@ -359,7 +359,7 @@ class TextEditor extends Component<Props, {}> {
 
     let options = {
       mode,
-      theme: "material",
+      theme: "dracula",
       lineNumbers: false,
       lineWrapping: true,
       extraKeys,

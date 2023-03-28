@@ -4,6 +4,8 @@ import "normalize.css";
 
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
+import "codemirror/theme/dracula.css";
+
 import "codemirror/addon/scroll/simplescrollbars.css";
 
 import "../styles/y-codemirror.css";
