@@ -346,6 +346,16 @@ class TextEditor extends Component<Props, {}> {
       };
     }
 
+    if (target === 'hydra') {
+      defaultExtraKeys = {
+        ...{
+          'Ctrl-Enter': () => this.evaluateLine(false),
+          'Alt-Enter': () => this.evaluateBlock(false),
+          'Shift-Ctrl-Enter': () => this.evaluateAll(false),
+        },
+      };
+    }
+
     const extraKeys = {
       "Ctrl-.": this.freeAllSound,
       "Cmd-.": this.freeAllSound,
