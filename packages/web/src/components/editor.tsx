@@ -183,6 +183,29 @@ export const Editor = React.forwardRef(
       lineNumbers ? lineNumbersExtension() : [],
       vimMode ? vim() : [],
       wrapText ? EditorView.lineWrapping : [],
+      
+      // Listen for changes in the editor
+      EditorView.updateListener.of((e) => {
+        // If the cursor position changed or
+        // if the code in the editor is updated
+        if (e.selectionSet || e.docChanged){
+          // set the character number for the cursor and line number
+          let atChar = e.state.selection.main.head;
+          let atLine = e.state.doc.lineAt(atChar).number;
+          let line = e.state.doc.lineAt(atChar).text;
+
+          // get the document id, target and content
+          let id = document.id;
+          let target = document.target;
+          let code = document.content;
+          
+          let msg = { event: 'message', id: id, target: target, atChar: atChar, atLine: atLine, line: line, code: code };
+          
+          // print to the console (and later hopefully OSC-message output)
+          // console.log(msg)
+          window.parent.postMessage(msg, "*");
+        } 
+      })
     ];
 
     // If it's read-only, put a div in front of the editor so that the user
