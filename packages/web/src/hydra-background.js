@@ -1,4 +1,8 @@
 import Hydra from 'hydra-synth';
+import TotalSerialism from 'total-serialism';
+
+const TS = TotalSerialism;
+Object.assign(window, TS.Generative, TS.Stochastic, TS.Transform);
 
 var c = document.getElementById('hydra-background');
 c.style.position = "fixed";
@@ -16,7 +20,7 @@ let hydra = new Hydra({
 	precision: 'mediump'
 });
 
-a.show();
+// a.show();
 // the slope of the amplitude response
 a.setSmooth(0.75);
 // the amplitude below which nothing is detected
